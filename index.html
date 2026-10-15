@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabores de México | 10 Platillos Emblemáticos</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mexican: {
+                            green: '#006847',
+                            'green-dark': '#004d35',
+                            red: '#CE1126',
+                            'red-dark': '#a30c1c',
+                            gold: '#EBB02D',
+                            terracotta: '#C85A32',
+                            cream: '#FDFBF7',
+                            charcoal: '#1A1818'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #C85A32;
+            border-radius: 10px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-mexican-cream text-mexican-charcoal font-sans min-h-screen flex flex-col justify-between selection:bg-mexican-red selection:text-white">
+
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-amber-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-mexican-green via-white to-mexican-red p-0.5 shadow-md">
+                    <div class="w-full h-full bg-mexican-cream rounded-full flex items-center justify-center text-mexican-red font-bold text-xl">
+                        🌶️
+                    </div>
+                </div>
+                <div>
+                    <span class="text-2xl font-black font-serif tracking-tight text-mexican-green">Sabores<span class="text-mexican-red">MX</span></span>
+                    <span class="block text-[10px] font-semibold uppercase tracking-widest text-mexican-terracotta -mt-1">Patrimonio Gastronómico</span>
+                </div>
+            </div>
+
+            <!-- Header Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
+                <a href="#platillos" class="hover:text-mexican-red transition-colors">Platillos</a>
+                <a href="#regiones" class="hover:text-mexican-red transition-colors">Regiones Gastronómicas</a>
+                <a href="#favoritos" onclick="toggleFavoritesModal()" class="hover:text-mexican-red transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-heart text-mexican-red"></i>
+                    <span>Mis Favoritos</span>
+                    <span id="favCount" class="bg-mexican-red text-white text-xs font-bold px-1.5 py-0.5 rounded-full">0</span>
+                </a>
+            </nav>
+
+            <button onclick="toggleFavoritesModal()" class="md:hidden relative p-2 text-mexican-charcoal">
+                <i class="fa-solid fa-heart text-xl text-mexican-red"></i>
+                <span id="favCountMobile" class="absolute -top-1 -right-1 bg-mexican-red text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+            </button>
+        </div>
+    </header>
+
+    <section class="relative bg-mexican-charcoal text-white overflow-hidden py-20 lg:py-28">
+        <div class="absolute inset-0 opacity-30 mix-blend-overlay">
+            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=1920&q=80" alt="Comida Mexicana Banner" class="w-full h-full object-cover">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-r from-mexican-charcoal via-mexican-charcoal/80 to-transparent"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-2xl">
+                <span class="inline-block px-3 py-1 bg-mexican-red/20 text-mexican-gold rounded-full text-xs font-bold tracking-wider uppercase mb-4 border border-mexican-red/30">
+                    🇲🇽 Patrimonio Inmaterial de la Humanidad
+                </span>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-extrabold leading-tight mb-6">
+                    Las 10 Joyas de la <span class="text-transparent bg-clip-text bg-gradient-to-r from-mexican-gold via-mexican-terracotta to-mexican-red">Cocina Mexicana</span>
+                </h1>
+                <p class="text-gray-300 text-lg mb-8 leading-relaxed">
+                    Un viaje culinario a través de las recetas más representativas, variaciones regionales y los mejores rincones del país para deleitar tu paladar.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#platillos" class="bg-mexican-red hover:bg-mexican-red-dark text-white font-semibold px-6 py-3.5 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2">
+                        Explorar Platillos <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                    <a href="#regiones" class="bg-white/10 hover:bg-white/20 text-white font-semibold px-6 py-3.5 rounded-xl border border-white/20 backdrop-blur-sm transition-all duration-300">
+                        Ver Mapa Gastronómico
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="platillos" class="py-12 bg-white border-b border-amber-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-6 items-center justify-between">
+                <!-- Search Box -->
+                <div class="relative w-full md:w-96">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" id="searchInput" placeholder="Buscar por platillo, ingrediente o estado..." 
+                           class="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-mexican-green focus:border-transparent transition-all">
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 custom-scrollbar">
+                    <button onclick="filterCategory('todos')" class="category-btn active border px-4 py-2.5 rounded-xl text-sm font-semibold whitespace-nowrap transition-all bg-mexican-green text-white border-mexican-green" data-cat="todos">
+                        Todos (10)
+                    </button>
+                    <button onclick="filterCategory('tacos')" class="category-btn border border-gray-200 px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 whitespace-nowrap transition-all" data-cat="tacos">
+                        Tacos & Antojitos
+                    </button>
+                    <button onclick="filterCategory('fuertes')" class="category-btn border border-gray-200 px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 whitespace-nowrap transition-all" data-cat="fuertes">
+                        Platillos Fuertes
+                    </button>
+                    <button onclick="filterCategory('sopas')" class="category-btn border border-gray-200 px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50 whitespace-nowrap transition-all" data-cat="sopas">
+                        Sopas y Caldos
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow">
+        <div id="dishesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamic Injection of Cards via JS -->
+        </div>
+
+        <div id="noResults" class="hidden text-center py-16">
+            <i class="fa-solid fa-utensils text-5xl text-gray-300 mb-4"></i>
+            <h3 class="text-xl font-bold text-gray-700">No encontramos coincidencias</h3>
+            <p class="text-gray-500 mt-1">Intenta buscar con otros términos o cambia el filtro de categoría.</p>
+        </div>
+    </main>
+
+    <section id="regiones" class="bg-amber-50/60 py-16 border-t border-amber-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-mexican-terracotta font-bold text-xs uppercase tracking-widest">Guía de Sabores</span>
+                <h2 class="text-3xl sm:text-4xl font-serif font-bold text-mexican-charcoal mt-1">Regiones Gastronómicas de México</h2>
+                <p class="text-gray-600 mt-2">Cada rincón de México ofrece sazones e ingredientes únicos gracias a su clima y geografía.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Region Norte -->
+                <div class="bg-white p-6 rounded-2xl border border-amber-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center text-mexican-terracotta text-2xl font-bold mb-4">
+                        🤠
+                    </div>
+                    <h3 class="text-xl font-bold text-mexican-charcoal mb-2">Norte</h3>
+                    <p class="text-xs text-gray-500 mb-3 font-semibold uppercase">Sonora, Sinaloa, Nuevo León</p>
+                    <p class="text-sm text-gray-600 leading-relaxed">Famoso por sus cortes de carne, machaca, tortillas de harina gigantes y mariscos frescos del Pacífico.</p>
+                    <div class="mt-4 pt-3 border-t border-gray-100 text-xs font-bold text-mexican-green">
+                        Especialidad: Tacos de Carne Asada
+                    </div>
+                </div>
+
+                <!-- Region Centro -->
+                <div class="bg-white p-6 rounded-2xl border border-amber-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center text-mexican-green text-2xl font-bold mb-4">
+                        🌮
+                    </div>
+                    <h3 class="text-xl font-bold text-mexican-charcoal mb-2">Centro y Valle</h3>
+                    <p class="text-xs text-gray-500 mb-3 font-semibold uppercase">CDMX, Puebla, Estado de México</p>
+                    <p class="text-sm text-gray-600 leading-relaxed">Corazón de la comida urbana, garnachas, maíz azul, el mole poblano refinado y tacos al pastor.</p>
+                    <div class="mt-4 pt-3 border-t border-gray-100 text-xs font-bold text-mexican-green">
+                        Especialidad: Mole Poblano & Al Pastor
+                    </div>
+                </div>
+
+                <!-- Region Occidente/Pacifico -->
+                <div class="bg-white p-6 rounded-2xl border border-amber-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center text-mexican-red text-2xl font-bold mb-4">
+                        🍲
+                    </div>
+                    <h3 class="text-xl font-bold text-mexican-charcoal mb-2">Pacífico y Occidente</h3>
+                    <p class="text-xs text-gray-500 mb-3 font-semibold uppercase">Jalisco, Michoacán, Guerrero</p>
+                    <p class="text-sm text-gray-600 leading-relaxed">Cuna de la birria jugosa, carnitiserías ancestrales, pozole tradicional y tequila.</p>
+                    <div class="mt-4 pt-3 border-t border-gray-100 text-xs font-bold text-mexican-green">
+                        Especialidad: Birria & Carnitas
+                    </div>
+                </div>
+
+                <!-- Region Sur y Peninsula -->
+                <div class="bg-white p-6 rounded-2xl border border-amber-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center text-mexican-gold text-2xl font-bold mb-4">
+                        🌺
+                    </div>
+                    <h3 class="text-xl font-bold text-mexican-charcoal mb-2">Sur y Yucatán</h3>
+                    <p class="text-xs text-gray-500 mb-3 font-semibold uppercase">Oaxaca, Yucatán, Chiapas</p>
+                    <p class="text-sm text-gray-600 leading-relaxed">Herencia maya y zapoteca rica en recados, achiote, tlayudas, moles negros y tamales envueltos en hoja de plátano.</p>
+                    <div class="mt-4 pt-3 border-t border-gray-100 text-xs font-bold text-mexican-green">
+                        Especialidad: Cochinita Nobilis & Tlayudas
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="recipeModal" class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar shadow-2xl relative my-auto">
+            <!-- Modal Header / Image -->
+            <div class="relative h-64 sm:h-80 w-full bg-gray-900">
+                <img id="modalImage" src="" alt="" class="w-full h-full object-cover opacity-90">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+                <button onclick="closeModal()" class="absolute top-4 right-4 bg-white/20 hover:bg-white/40 text-white w-10 h-10 rounded-full flex items-center justify-center backdrop-blur-md transition-colors">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+                <div class="absolute bottom-6 left-6 right-6 text-white">
+                    <span id="modalCategory" class="px-3 py-1 bg-mexican-red text-xs font-bold rounded-full uppercase tracking-wider mb-2 inline-block">Categoría</span>
+                    <h2 id="modalTitle" class="text-3xl sm:text-4xl font-serif font-bold">Nombre del Platillo</h2>
+                </div>
+            </div>
+
+            <!-- Modal Content Body -->
+            <div class="p-6 sm:p-8 space-y-8">
+                <!-- Meta Info Badges -->
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 p-4 bg-amber-50/70 rounded-2xl border border-amber-100">
+                    <div>
+                        <span class="block text-xs font-semibold text-gray-500">Origen Principal</span>
+                        <span id="modalOrigin" class="font-bold text-mexican-charcoal text-sm">Estado / Región</span>
+                    </div>
+                    <div>
+                        <span class="block text-xs font-semibold text-gray-500">Tiempo estimado</span>
+                        <span id="modalTime" class="font-bold text-mexican-charcoal text-sm">45 mins</span>
+                    </div>
+                    <div class="col-span-2 sm:col-span-1">
+                        <span class="block text-xs font-semibold text-gray-500">Dificultad</span>
+                        <span id="modalDifficulty" class="font-bold text-mexican-terracotta text-sm">Media</span>
+                    </div>
+                </div>
+
+                <!-- Resumen y Descripción -->
+                <div>
+                    <h3 class="text-lg font-serif font-bold text-mexican-charcoal mb-2 border-b pb-2 border-gray-100">Descripción e Historia</h3>
+                    <p id="modalDescription" class="text-gray-600 leading-relaxed text-sm sm:text-base"></p>
+                </div>
+
+                <!-- Receta: Ingredientes y Preparación -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100">
+                        <h4 class="font-bold text-mexican-green mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-basket-shopping"></i> Ingredientes Clave
+                        </h4>
+                        <ul id="modalIngredients" class="text-sm text-gray-700 space-y-2 list-disc pl-4"></ul>
+                    </div>
+                    <div class="bg-gray-50 p-5 rounded-2xl border border-gray-100">
+                        <h4 class="font-bold text-mexican-red mb-3 flex items-center gap-2">
+                            <i class="fa-solid fa-fire-burner"></i> Preparación Básica
+                        </h4>
+                        <ol id="modalSteps" class="text-sm text-gray-700 space-y-2 list-decimal pl-4"></ol>
+                    </div>
+                </div>
+
+                <!-- Mejores zonas para comerlo -->
+                <div>
+                    <h3 class="text-lg font-serif font-bold text-mexican-charcoal mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-mexican-red"></i> Mejores Zonas y Estados para Probarlo
+                    </h3>
+                    <div id="modalBestPlaces" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <!-- Variaciones Regionales -->
+                <div>
+                    <h3 class="text-lg font-serif font-bold text-mexican-charcoal mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-utensils text-mexican-gold"></i> Variaciones Típicas
+                    </h3>
+                    <ul id="modalVariations" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-600"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="favModal" class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-sm flex justify-end">
+        <div class="bg-white w-full max-w-md h-full shadow-2xl p-6 flex flex-col justify-between overflow-y-auto">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-gray-100">
+                    <h2 class="text-2xl font-serif font-bold text-mexican-charcoal flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-mexican-red"></i> Mis Platillos Favoritos
+                    </h2>
+                    <button onclick="toggleFavoritesModal()" class="text-gray-400 hover:text-gray-600 p-2">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+                <div id="favList" class="mt-6 space-y-4">
+                    <!-- Dynamic Favorites Render -->
+                </div>
+            </div>
+            <div class="pt-6 border-t border-gray-100">
+                <button onclick="toggleFavoritesModal()" class="w-full bg-mexican-charcoal text-white font-semibold py-3 rounded-xl hover:bg-black transition-colors">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-mexican-charcoal text-white pt-12 pb-8 border-t-4 border-mexican-green">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 pb-8 border-b border-gray-800">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl">🌮</span>
+                    <div>
+                        <span class="text-xl font-serif font-bold text-white">Sabores de México</span>
+                        <p class="text-xs text-gray-400">Celebrando la riqueza gastronómica de México</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 text-gray-400 text-sm">
+                    <a href="#platillos" class="hover:text-white transition-colors">Platillos</a>
+                    <a href="#regiones" class="hover:text-white transition-colors">Regiones</a>
+                </div>
+            </div>
+            <div class="mt-8 text-center text-xs text-gray-500">
+                <p>&copy; 2026 Sabores de México. Creado con pasión gastronómica e interactividad HTML/CSS/JS.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 10 Typical Mexican Dishes Dataset
+        const dishes = [
+            {
+                id: 'tacos-al-pastor',
+                name: 'Tacos al Pastor',
+                category: 'tacos',
+                categoryLabel: 'Tacos & Antojitos',
+                origin: 'Ciudad de México y Puebla',
+                time: '2 hrs (Marinado) + 20 min',
+                difficulty: 'Media',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW-QKTdPx8q6pQ-BOftOsPPttugo_m_k_epGgMIT7vJA&s=10',
+                shortDesc: 'Carne de cerdo adobada en trompo con piña, cilantro y cebolla sobre tortillas de maíz.',
+                fullDesc: 'Inspirados en el shawarma árabe traído por inmigrantes libaneses, los Tacos al Pastor son un ícono indiscutible de la cocina mexicana moderna. La carne de cerdo se marina en un adobo rojo especiado y se cocina verticalmente en un trompo giratorio.',
+                ingredients: [
+                    'Carne de cerdo (cabeza de lomo)',
+                    'Adobo de achiote, chiles guajillo y vinagre',
+                    'Piña fresca',
+                    'Tortillas de maíz pequeñas',
+                    'Cebolla picada, cilantro y salsa verde o roja'
+                ],
+                steps: [
+                    'Filetear la carne finamente y marinar con la mezcla de achiote y especias por al menos 4 horas.',
+                    'Apilar en un asador vertical (o asar a fuego alto en sartén con un toque de aceite).',
+                    'Servir carne bien dorada en tortilla caliente, añadir una rebanada de piña asada, cebolla y cilantro.'
+                ],
+                bestPlaces: ['Ciudad de México (El Vilsito, El Tizoncito)', 'Puebla', 'Estado de México', 'Guadalajara'],
+                variations: [
+                    '<strong>Gringa:</strong> Servido en tortilla de harina con queso fundido.',
+                    '<strong>Alambre al Pastor:</strong> Salteado con pimientos, tocino y queso Oaxaca.',
+                    '<strong>Taco Árabe:</strong> El antecesor directo, servido en pan árabe sin piña.'
+                ]
+            },
+            {
+                id: 'mole-poblano',
+                name: 'Mole Poblano',
+                category: 'fuertes',
+                categoryLabel: 'Platillo Fuerte',
+                origin: 'Puebla',
+                time: '3 - 4 Horas',
+                difficulty: 'Alta',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXsfXa5zkBT3D4zSagvrwMUWBFVdY4liMhOKcfz7NThQ&s=10',
+                shortDesc: 'Espesa salsa artesanal con chocolate, chiles secos, semillas y especias sobre pavo o pollo.',
+                fullDesc: 'Considerado el plato nacional por excelencia, el Mole Poblano es una obra maestra del barroco culinario mestizo. Combina ingredientes prehispánicos (chiles, jitomate, cacao) con ingredientes europeos y asiáticos (especias, manteca, almendras).',
+                ingredients: [
+                    'Chiles mulato, pasilla y ancho',
+                    'Chocolate amargo o de mesa',
+                    'Ajonjolí, almendras, nueces y pasas',
+                    'Canela, clavo, pimienta y plátano macho',
+                    'Piezas de pollo o pavo'
+                ],
+                steps: [
+                    'Tostar e hidratar los chiles secos.',
+                    'Freír las semillas, frutos secos, especias y pan/tortilla.',
+                    'Moler todos los ingredientes con caldo de ave hasta formar una pasta tersa.',
+                    'Cocer la pasta a fuego lento con manteca hasta que espese y soltar la grasa, añadir el chocolate y servir sobre la proteína.'
+                ],
+                bestPlaces: ['Puebla de Zaragoza (Mural de los Poblanos)', 'San Pedro Atocpan (CDMX)', 'Oaxaca'],
+                variations: [
+                    '<strong>Mole Negro:</strong> Típico de Oaxaca, más oscuro y especiado con chiles tatemados.',
+                    '<strong>Mole Verde:</strong> A base de pepitas de calabaza, tomate verde y hierbas frescas.',
+                    '<strong>Enmoladas:</strong> Tortillas dobladas bañadas abundantemente en salsa de mole.'
+                ]
+            },
+            {
+                id: 'pozole-rojo',
+                name: 'Pozole Rojo',
+                category: 'sopas',
+                categoryLabel: 'Sopas y Caldos',
+                origin: 'Jalisco y Guerrero',
+                time: '2.5 Horas',
+                difficulty: 'Media',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRveJu9OMjp4XElKxzJQH4xOfhfy80skaVGHK97HpGcWg&s=10',
+                shortDesc: 'Caldo de maíz cacahuazintle reventado con carne de cerdo y condimentos frescos.',
+                fullDesc: 'El Pozole es un caldo ritual prehispánico a base de granos de maíz cacahuazintle sometidos a nixtamalización. Tradicionalmente consumido en fiestas patrias y reuniones familiares el fin de semana.',
+                ingredients: [
+                    'Maíz cacahuazintle precocido',
+                    'Carne de cerdo (cabeza, espinazo y maciza)',
+                    'Salsa de chile ancho y guajillo',
+                    'Rábano, lechuga, cebolla y orégano',
+                    'Tostadas con crema'
+                ],
+                steps: [
+                    'Hervir el maíz cacahuazintle hasta que "floree" (reviente).',
+                    'Agregar la carne de cerdo con ajo y cebolla y cocinar a fuego lento.',
+                    'Licuar los chiles desvenados e incorporar al caldo para darle el tono rojo característico.',
+                    'Servir bien caliente rodeado de sus guarniciones de verdura fresca.'
+                ],
+                bestPlaces: ['Guadalajara (Jalisco)', 'Chilpancingo (Guerrero)', 'Ciudad de México'],
+                variations: [
+                    '<strong>Pozole Blanco:</strong> Típico de Guerrero, sin salsa de chiles en el caldo base.',
+                    '<strong>Pozole Verde:</strong> Preparado con pepita de calabaza y tomate en zonas de Guerrero.',
+                    '<strong>Pozole de Mariscos:</strong> Popular en las costas del Pacífico como Colima y Nayarit.'
+                ]
+            },
+            {
+                id: 'cochinita-pibil',
+                name: 'Cochinita Pibil',
+                category: 'fuertes',
+                categoryLabel: 'Platillo Fuerte',
+                origin: 'Yucatán',
+                time: '3 Horas (Horno)',
+                difficulty: 'Media',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8yKTIopUS90o89s-GgfdDyVg2aW1JJ35LQj4jUXCO7g&s=10',
+                shortDesc: 'Carne de cerdo marinada en achiote y jugo de naranja agria, horneada en hojas de plátano.',
+                fullDesc: 'Orgullo de la península de Yucatán, la Cochinita Pibil es el resultado de la fusión maya y española. Tradicionalmente se cocina en un "pib" (horno subterráneo) en envuelta en hojas de plátano.',
+                ingredients: [
+                    'Carne de cerdo (pierna y lomo)',
+                    'Pasta de achiote natural',
+                    'Jugo de naranja agria (o mezcla de naranja dulce con vinagre/limón)',
+                    'Hojas de plátano para envolver',
+                    'Cebolla morada encurtida con chile habanero'
+                ],
+                steps: [
+                    'Disolver el achiote en el jugo de naranja agria con especias y sal.',
+                    'Marinar la carne y colocarla dentro de un molde forrado con hojas de plátano.',
+                    'Hornear tapado herméticamente a fuego bajo por 2.5 horas hasta que la carne se deshebre sola.',
+                    'Servir acompañada de cebolla morada encurtida.'
+                ],
+                bestPlaces: ['Mérida (Yucatán)', 'Valladolid', 'Campeche', 'Cancún'],
+                variations: [
+                    '<strong>Panuchos de Cochinita:</strong> Tortillas fritas rellenas de frijol con cochinita encima.',
+                    '<strong>Salbutes:</strong> Tortillas infladas suaves con cochinita y aguacate.'
+                ]
+            },
+            {
+                id: 'chiles-en-nogada',
+                name: 'Chiles en Nogada',
+                category: 'fuertes',
+                categoryLabel: 'Platillo Fuerte',
+                origin: 'Puebla',
+                time: '2 Horas',
+                difficulty: 'Alta',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXG0-vHGtwi2ing66XLy8yvQxqeSZ2Ji3QLbMcjD1IIg&s=10',
+                shortDesc: 'Chile poblano relleno de picadillo de frutas, bañado en salsa de nuez de Castilla y granada.',
+                fullDesc: 'Platillo de temporada de fiestas patrias (agosto-septiembre). Representa los colores de la bandera mexicana: verde (chile y perejil), blanco (nogada) y rojo (granada). Fue creado por monjas agustinas en Puebla para celebrar la independencia.',
+                ingredients: [
+                    'Chiles poblanos grandes',
+                    'Carne picada de cerdo y res',
+                    'Frutas: manzana panochera, pera de leche, durazno criollo y piñones',
+                    'Salsa Nogada: Nuez de Castilla fresca, queso de cabra y jerez',
+                    'Granada roja y perejil para decorar'
+                ],
+                steps: [
+                    'Asar, pelar y desvenar los chiles poblanos.',
+                    'Preparar el picadillo sufriendo la carne con las frutas criollas picadas finamente.',
+                    'Moler las nueces peladas con queso fresco, leche y un toque de jerez para la crema nogada.',
+                    'Rellenar los chiles, bañar generosamente con la nogada y decorar con granada.'
+                ],
+                bestPlaces: ['Puebla (San Andrés Cholula y Centro)', 'Ciudad de México'],
+                variations: [
+                    '<strong>Capeados vs Sin Capear:</strong> La receta tradicional poblana exige capearlo en huevo, aunque en muchas regiones se sirve sin capear.'
+                ]
+            },
+            {
+                id: 'chilaquiles',
+                name: 'Chilaquiles Verdes / Rojos',
+                category: 'tacos',
+                categoryLabel: 'Tacos & Antojitos',
+                origin: 'Todo México',
+                time: '30 min',
+                difficulty: 'Baja',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZFIP0yxLeoUCE2e26NhUg_d0Uhcw0I2OtzfEPSIx5HA&s=10',
+                shortDesc: 'Totopos de maíz crujientes bañados en salsa picante verde o roja con queso y crema.',
+                fullDesc: 'El desayuno mexicano por excelencia. Nacidos como una forma ingeniosa de aprovechar las tortillas de maíz del día anterior, hoy en día son un ícono gastronómico infaltable en hogares y restaurantes.',
+                ingredients: [
+                    'Tortillas de maíz cortadas en triángulos y fritas (totopos)',
+                    'Salsa verde (tomate verde y chile serrano) o roja (jitomate y chile de árbol)',
+                    'Crema ácida y queso fresco desmoronado',
+                    'Cebolla en julianas',
+                    'Pollo deshebrado, huevo frito o cecina'
+                ],
+                steps: [
+                    'Freír la salsa de tomate/jitomate picante hasta que esté sazonada.',
+                    'Agregar los totopos crujientes a la salsa caliente y mezclar rápidamente.',
+                    'Servir inmediatamente para mantener textura o dejar suavizar un minuto según el gusto.',
+                    'Corona con crema, queso, cebolla y la proteína elegida.'
+                ],
+                bestPlaces: ['Ciudad de México (La Chilakleta, Chilakillers)', 'Oaxaca', 'Guadalajara'],
+                variations: [
+                    '<strong>Torta de Chilaquiles:</strong> Chilaquiles servidos dentro de un bolillo (popular en CDMX).',
+                    '<strong>Chilaquiles Divorciados:</strong> Mitad bañados en salsa verde y mitad en salsa roja.'
+                ]
+            },
+            {
+                id: 'tamales-mexicanos',
+                name: 'Tamales Tradicionales',
+                category: 'tacos',
+                categoryLabel: 'Tacos & Antojitos',
+                origin: 'Nacional / Prehispánico',
+                time: '2.5 Horas',
+                difficulty: 'Alta',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPsghhNOr0Vu9QIelESR5tx9XBDgjpBuSw3RQ9ATEjfA&s=10',
+                shortDesc: 'Masa de maíz batida con manteca y rellenada con guisados, envuelta en hoja de maíz o plátano.',
+                fullDesc: 'Del náhuatl "tamalli" (envuelto), los tamales son una de las preparaciones más antiguas de Mesoamérica. Existen más de 500 variedades a lo largo de todo el país.',
+                ingredients: [
+                    'Masa de maíz nixtamalizado',
+                    'Manteca de cerdo o vegetal batida',
+                    'Caldo de carne o pollo',
+                    'Rellenos: Salsa verde con pollo, Mole con guajolote, Dulce con pasas, Raja con queso',
+                    'Hojas de maíz secas (totomoxtle) o de plátano'
+                ],
+                steps: [
+                    'Batir la manteca hasta acremar e incorporar la masa de maíz y caldo hasta lograr ligereza.',
+                    'Extender una porción de masa en la hoja de maíz previamente suavizada.',
+                    'Agregar el guisado al centro, envolver cuidadosamente y cocer al vapor durante 1 hora.'
+                ],
+                bestPlaces: ['Ciudad de México', 'Oaxaca', 'Veracruz', 'Michoacán'],
+                variations: [
+                    '<strong>Zacahuil:</strong> Tamal gigante de la Huasteca (hasta de 5 metros) cocido bajo tierra.',
+                    '<strong>Corundas:</strong> Tamales triangulares de Michoacán servidos con crema y salsa.',
+                    '<strong>Tamales Oaxaqueños:</strong> Envueltos en hoja de plátano con mole negro.'
+                ]
+            },
+            {
+                id: 'birria-de-res-chivo',
+                name: 'Birria de Res o Chivo',
+                category: 'sopas',
+                categoryLabel: 'Sopas y Caldos',
+                origin: 'Jalisco',
+                time: '3.5 Horas',
+                difficulty: 'Media',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO_9GTAytYhN01BbeFksDyGwG9fndxFe06SHUxuWukXg&s=10',
+                shortDesc: 'Carne tierno-estofada en consomé especiado de chiles secos, servida en tacos o tazón.',
+                fullDesc: 'Originaria del estado de Jalisco en el siglo XVI, la birria consiste en carne marinar de chivo o res cocinada a fuego lento en un adobo rico en hierbas de olor y chiles. Su fenómeno global reciente la ha popularizado en todo el mundo.',
+                ingredients: [
+                    'Carne de chivo o res (chambarete, costilla)',
+                    'Chiles ancho, guajillo y morita',
+                    'Jitomate, vinagre, tomillo, orégano, comino y jengibre',
+                    'Consomé concentrado',
+                    'Tortillas de maíz, cilantro, cebolla y limón'
+                ],
+                steps: [
+                    'Moler los chiles tostados con vinagre y especias aromáticas.',
+                    'Marinar la carne y hornear o cocinar a fuego muy lento con caldo por 3 horas.',
+                    'Separar el consomé resultante y deshebrar la carne jugosa.'
+                ],
+                bestPlaces: ['Guadalajara (El Chololo, Birrieria las Nueve Esquinas)', 'Tijuana', 'CDMX'],
+                variations: [
+                    '<strong>Quesabirrias:</strong> Tacos de tortilla dorada en la grasa de la birria, con queso fundido y consomé aparte para sumergir.'
+                ]
+            },
+            {
+                id: 'carnitas-michoacan',
+                name: 'Carnitas de Cerdo',
+                category: 'fuertes',
+                categoryLabel: 'Platillo Fuerte',
+                origin: 'Michoacán',
+                time: '2 Horas',
+                difficulty: 'Media',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQw4mQPiO2UipgLtvIKCN_4ekNcQiwmv10acwbNT1a4g&s=10',
+                shortDesc: 'Carne de cerdo confitada lentamente en su propia manteca dentro de cazo de cobre.',
+                fullDesc: 'Las carnitas de Michoacán son el rey indiscutible de las fiestas. Diversas partes del cerdo se confitan en grandes cazos de cobre tradicional con un toque de naranja, hierbas y refresco de cola o leche.',
+                ingredients: [
+                    'Cortes varios de cerdo (maciza, costilla, cuerito, buche)',
+                    'Manteca de cerdo pura',
+                    'Jugo de naranja, hierbas de olor y sal de grano',
+                    'Salsa verde cruda, cebolla, cilantro y limones'
+                ],
+                steps: [
+                    'Fundir la manteca en un cazo grande y agregar las partes de carne más duras primero.',
+                    'Añadir sal, hierbas y el toque agrio de la naranja.',
+                    'Cocinar a fuego constante hasta que la carne esté dorada por fuera y extremadamente tierna por dentro.'
+                ],
+                bestPlaces: ['Quiroga y Uruapan (Michoacán)', 'Estado de México', 'Ciudad de México'],
+                variations: [
+                    '<strong>Taco Surtido:</strong> Mezcla de maciza con cuerito y buche.',
+                    '<strong>Torta Ahogada:</strong> Carnitas dentro de pan birote salado, ahogadas en salsa de chile de árbol (Jalisco).'
+                ]
+            },
+            {
+                id: 'tlayuda-oaxaquena',
+                name: 'Tlayuda Oaxaqueña',
+                category: 'tacos',
+                categoryLabel: 'Tacos & Antojitos',
+                origin: 'Oaxaca',
+                time: '20 min',
+                difficulty: 'Baja',
+                image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZVkbWG4_fpnVL2PYzZC6ztRqdMyY-uqdDaHCjiZtfHA&s=10',
+                shortDesc: 'Tortilla gigante de maíz crujiente tostada al comal con asiento, frijoles, quesillo y tasajo.',
+                fullDesc: 'A menudo llamada la "pizza oaxaqueña", la Tlayuda es una tortilla de maíz de casi 40 cm de diámetro, semi-tostada en comal de barro, que sirve como base para los mejores ingredientes del estado de Oaxaca.',
+                ingredients: [
+                    'Tortilla tlayuda de maíz blanco tostada',
+                    'Asiento de cerdo (manteca con restos tostados)',
+                    'Frijoles negros refritos sazonados con hoja de aguacate',
+                    'Quesillo oaxaqueño deshebrado',
+                    'Tasajo (carne de res curada), cecina enchilada o chorizo',
+                    'Repollo picado, jitomate y aguacate'
+                ],
+                steps: [
+                    'Untar el asiento de cerdo y la pasta de frijol sobre la tlayuda.',
+                    'Colocar una capa generosa de col/repollo y quesillo deshebrado.',
+                    'Tostar en la parrilla o anafre hasta que quede crujiente.',
+                    'Servir con la carne elegida asada al carbón arriba.'
+                ],
+                bestPlaces: ['Oaxaca de Juárez (Mercado 20 de Noviembre)', 'San Bartolo Coyotepec'],
+                variations: [
+                    '<strong>Tlayuda Doblada:</strong> Servida a la mitad como un gran taco crujiente.',
+                    '<strong>Tlayuda de Mariscos:</strong> Versiones modernas presentes en la costa oaxaqueña.'
+                ]
+            }
+        ];
+
+        // Favorite items state (localStorage backed)
+        let favorites = JSON.parse(localStorage.getItem('mexicanDishesFavs')) || [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDishes(dishes);
+            updateFavCounters();
+
+            // Real-time Search Listener
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase().trim();
+                const activeCat = document.querySelector('.category-btn.active').dataset.cat;
+                
+                filterDishes(activeCat, searchTerm);
+            });
+        });
+
+        // Function to Render Dish Cards into Grid
+        function renderDishes(dishesToRender) {
+            const grid = document.getElementById('dishesGrid');
+            const noResults = document.getElementById('noResults');
+
+            if (dishesToRender.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+            grid.innerHTML = dishesToRender.map(dish => {
+                const isFav = favorites.includes(dish.id);
+                return `
+                    <div class="bg-white rounded-3xl border border-amber-100/80 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+                        <div class="relative h-56 overflow-hidden bg-gray-100">
+                            <img src="${dish.image}" alt="${dish.name}" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.src='https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=800&q=80'">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-mexican-charcoal text-xs font-extrabold px-3 py-1 rounded-full shadow-sm">
+                                ${dish.categoryLabel}
+                            </span>
+                            <button onclick="toggleFav('${dish.id}', event)" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-gray-400 hover:text-mexican-red transition-colors shadow-sm">
+                                <i class="${isFav ? 'fa-solid text-mexican-red' : 'fa-regular'} fa-heart text-lg"></i>
+                            </button>
+                        </div>
+
+                        <div class="p-6 flex-grow flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center gap-2 text-xs font-semibold text-mexican-terracotta mb-2">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <span>${dish.origin}</span>
+                                </div>
+                                <h3 class="text-2xl font-serif font-bold text-mexican-charcoal mb-2 group-hover:text-mexican-green transition-colors">
+                                    ${dish.name}
+                                </h3>
+                                <p class="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-2">
+                                    ${dish.shortDesc}
+                                </p>
+                            </div>
+
+                            <div class="pt-4 border-t border-gray-100 flex items-center justify-between mt-auto">
+                                <span class="text-xs font-semibold text-gray-500">
+                                    <i class="fa-regular fa-clock mr-1"></i> ${dish.time}
+                                </span>
+                                <button onclick="openModal('${dish.id}')" class="text-sm font-bold text-mexican-red hover:text-mexican-red-dark flex items-center gap-1 group/btn">
+                                    Ver Receta <i class="fa-solid fa-arrow-right text-xs group-hover/btn:translate-x-1 transition-transform"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Category & Search Combined Filtering Logic
+        function filterCategory(cat) {
+            // Update button styles
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.classList.add('bg-mexican-green', 'text-white', 'border-mexican-green', 'active');
+                    btn.classList.remove('text-gray-600', 'hover:bg-gray-50', 'border-gray-200');
+                } else {
+                    btn.classList.remove('bg-mexican-green', 'text-white', 'border-mexican-green', 'active');
+                    btn.classList.add('text-gray-600', 'hover:bg-gray-50', 'border-gray-200');
+                }
+            });
+
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            filterDishes(cat, searchTerm);
+        }
+
+        function filterDishes(cat, query) {
+            let filtered = dishes;
+
+            if (cat !== 'todos') {
+                filtered = filtered.filter(d => d.category === cat);
+            }
+
+            if (query) {
+                filtered = filtered.filter(d => 
+                    d.name.toLowerCase().includes(query) ||
+                    d.shortDesc.toLowerCase().includes(query) ||
+                    d.origin.toLowerCase().includes(query) ||
+                    d.ingredients.some(ing => ing.toLowerCase().includes(query))
+                );
+            }
+
+            renderDishes(filtered);
+        }
+
+        // Modal Open & Close Handler
+        function openModal(id) {
+            const dish = dishes.find(d => d.id === id);
+            if (!dish) return;
+
+            document.getElementById('modalImage').src = dish.image;
+            document.getElementById('modalCategory').innerText = dish.categoryLabel;
+            document.getElementById('modalTitle').innerText = dish.name;
+            document.getElementById('modalOrigin').innerText = dish.origin;
+            document.getElementById('modalTime').innerText = dish.time;
+            document.getElementById('modalDifficulty').innerText = dish.difficulty;
+            document.getElementById('modalDescription').innerText = dish.fullDesc;
+
+            // Render Ingredients List
+            document.getElementById('modalIngredients').innerHTML = dish.ingredients
+                .map(ing => `<li>${ing}</li>`).join('');
+
+            // Render Steps List
+            document.getElementById('modalSteps').innerHTML = dish.steps
+                .map(step => `<li>${step}</li>`).join('');
+
+            // Render Best Places Badges
+            document.getElementById('modalBestPlaces').innerHTML = dish.bestPlaces
+                .map(place => `<span class="bg-red-50 text-mexican-red text-xs font-semibold px-3 py-1.5 rounded-lg border border-red-100"><i class="fa-solid fa-utensils mr-1"></i>${place}</span>`).join('');
+
+            // Render Variations
+            document.getElementById('modalVariations').innerHTML = dish.variations
+                .map(v => `<li class="bg-gray-50 p-3 rounded-xl border border-gray-100">${v}</li>`).join('');
+
+            document.getElementById('recipeModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('recipeModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Favorites Handler Logic
+        function toggleFav(id, event) {
+            if (event) event.stopPropagation();
+            
+            const index = favorites.indexOf(id);
+            if (index > -1) {
+                favorites.splice(index, 1);
+            } else {
+                favorites.push(id);
+            }
+
+            localStorage.setItem('mexicanDishesFavs', JSON.stringify(favorites));
+            updateFavCounters();
+            
+            // Re-render current list to update heart icons
+            const activeCat = document.querySelector('.category-btn.active').dataset.cat;
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            filterDishes(activeCat, searchTerm);
+
+            if (!document.getElementById('favModal').classList.contains('hidden')) {
+                renderFavList();
+            }
+        }
+
+        function updateFavCounters() {
+            document.getElementById('favCount').innerText = favorites.length;
+            document.getElementById('favCountMobile').innerText = favorites.length;
+        }
+
+        function toggleFavoritesModal() {
+            const modal = document.getElementById('favModal');
+            if (modal.classList.contains('hidden')) {
+                renderFavList();
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function renderFavList() {
+            const container = document.getElementById('favList');
+            if (favorites.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 text-gray-400">
+                        <i class="fa-regular fa-heart text-4xl mb-2"></i>
+                        <p class="text-sm">Aún no has agregado platillos favoritos.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const favDishes = dishes.filter(d => favorites.includes(d.id));
+            container.innerHTML = favDishes.map(d => `
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-2xl border border-gray-100">
+                    <div class="flex items-center gap-3">
+                        <img src="${d.image}" alt="${d.name}" class="w-14 h-14 rounded-xl object-cover">
+                        <div>
+                            <h4 class="font-bold text-sm text-mexican-charcoal">${d.name}</h4>
+                            <span class="text-xs text-gray-500">${d.origin}</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="openModal('${d.id}'); toggleFavoritesModal();" class="text-mexican-green text-xs font-bold hover:underline p-1">
+                            Ver
+                        </button>
+                        <button onclick="toggleFav('${d.id}')" class="text-gray-400 hover:text-mexican-red p-1">
+                            <i class="fa-solid fa-trash-can text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
